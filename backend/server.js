@@ -37,7 +37,8 @@ todoRoutes.route('/update/:id').post(function(req, res) {
             todo.todo_responsible = req.body.todo_responsible;
             todo.todo_priority = req.body.todo_priority;
             todo.todo_completed = req.body.todo_completed;
-            todo.save().then(todo => {
+            todo.save()
+            .then(todo => {
                 res.json('Todo updated!');
             })
             .catch(err => {
