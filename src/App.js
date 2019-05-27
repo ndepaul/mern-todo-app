@@ -22,10 +22,10 @@ class App extends Component {
             <div className="collpase navbar-collapse">
                 <ul className="navbar-nav mr-auto">
                   <li className="navbar-item">
-                    <Link to="/" className="nav-link">Todos</Link>
+                    <Link to="/" className="nav-link">ToDos</Link>
                   </li>
                   <li className="navbar-item">
-                    <Link to="/create" className="nav-link">Create Todo</Link>
+                    <Link to="/create" className="nav-link">Create To Do</Link>
                   </li>
                 </ul>
               </div>
