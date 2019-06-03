@@ -12,6 +12,9 @@ let Todo = new Schema({
     },
     todo_completed: {
         type: Boolean
+    },
+    todo_author: {
+      type: String
     }
 });
 module.exports = mongoose.model('Todo', Todo);
