@@ -8,6 +8,8 @@ import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 
+import Callback from './Callback';
+
 class App extends Component {
   render() {
     return  (
@@ -18,6 +20,8 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
+
+          <Route exact path='/callback' component={Callback}/>
         </div>
       </Router>
     );
