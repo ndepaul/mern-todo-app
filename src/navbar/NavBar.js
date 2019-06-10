@@ -3,6 +3,12 @@ import { BrowserRouter as Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "/Users/nicolas/mern-todo-app/src/Amplitude.png";
 
+function NavBar(props) {
+  const signOut = () => {
+    auth0Client.signOut();
+    props.history.replace('/');
+  };
+
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -20,8 +26,21 @@ function NavBar() {
             </li>
           </ul>
         </div>
+
+        {
+          !auth0Client.isAuthenticated() &&
+          <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+        }
+        {
+          auth0Client.isAuthenticated() &&
+          <div>
+            <label className="mr-2 text-white">{auth0Client.getProfile().name}</label>
+            <button className="btn btn-dark" onClick={() => {signOut()}}>Sign Out</button>
+          </div>
+        }
+
         </nav>
   );
 }
 
-export default NavBar;
+export default withRouter(NavBar);
