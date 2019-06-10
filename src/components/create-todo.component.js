@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import auth0Client from '../Auth';
 
 export default class CreateTodo extends Component {
 
@@ -53,7 +53,10 @@ export default class CreateTodo extends Component {
               todo_completed: this.state.todo_completed
           };
 
-          axios.post('http://localhost:4000/todos/add', newTodo)
+          axios.post('http://localhost:4000/todos/add', newTodo,
+          {
+            headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+          })
               .then(res => console.log(res.data));
 
           this.setState({
