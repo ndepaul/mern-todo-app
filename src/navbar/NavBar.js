@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Route, Link } from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "/Users/nicolas/mern-todo-app/src/Amplitude.png";
+import auth0Client from '../Auth';
 
 function NavBar(props) {
   const signOut = () => {
@@ -9,7 +11,6 @@ function NavBar(props) {
     props.history.replace('/');
   };
 
-function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="https://amplitude.com/" target="_blank" rel="noopener noreferrer">
