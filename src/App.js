@@ -19,7 +19,7 @@ class App extends Component {
           <NavBar/>
           <br/>
           <Route path="/" exact component={TodosList} />
-          <SecuredRoute path="/edit/:id" component={EditTodo} />
+          <Route path="/edit/:id" component={EditTodo} />
           <SecuredRoute path="/create" component={CreateTodo} />
 
           <Route exact path='/callback' component={Callback}/>
