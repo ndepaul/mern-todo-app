@@ -6,7 +6,6 @@ return (
 <div className="row">
 <div className="medium-12 columns">
 <h2 id="welcomeText">Welcome Screen</h2>
-
 </div>
 </div>
 );
