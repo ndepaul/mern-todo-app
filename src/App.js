@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
+import Welcome from "./components/welcome";
 
 import Callback from './Callback';
 
@@ -44,10 +45,10 @@ class App extends Component {
         <div className="container">
           <NavBar/>
           <br/>
-          <Route path="/" exact component={TodosList} />
+          <Route exact path="/" component={Welcome} />
+          <Route path="/todos" component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <SecuredRoute path="/create" component={CreateTodo} checkingSession={this.state.checkingSession} />
-
           <Route exact path='/callback' component={Callback}/>
         </div>
       </Router>

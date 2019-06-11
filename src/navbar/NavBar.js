@@ -20,7 +20,7 @@ function NavBar(props) {
       <div className="collpase navbar-collapse">
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
-              <Link to="/" className="nav-link">To Do List</Link>
+              <Link to="/todos" className="nav-link">To Do List</Link>
             </li>
             <li className="navbar-item">
               <Link to="/create" className="nav-link">Create To Do</Link>
