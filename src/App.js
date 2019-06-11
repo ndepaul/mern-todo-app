@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
+import auth0Client from './Auth';
 import NavBar from './navbar/NavBar';
 import SecuredRoute from './securedroute/SecuredRoute';
 
@@ -12,6 +13,17 @@ import TodosList from "./components/todos-list.component";
 import Callback from './Callback';
 
 class App extends Component {
+
+  async componentDidMount() {
+  if (this.props.location.pathname === '/Callback') return;
+  try {
+    await auth0Client.silentAuth();
+    this.forceUpdate();
+  } catch (err) {
+    if (err.error !== 'login_required') console.log(err.error);
+  }
+  }
+
   render() {
     return  (
       <Router>
@@ -29,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
