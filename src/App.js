@@ -14,14 +14,28 @@ import Callback from './Callback';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkingSession: true,
+    }
+  }
+
   async componentDidMount() {
-  if (this.props.location.pathname === '/Callback') return;
+    if (this.props.location.pathname === '/callback') {
+    this.setState({checkingSession:false});
+    return;
+  }
+
   try {
     await auth0Client.silentAuth();
     this.forceUpdate();
   } catch (err) {
     if (err.error !== 'login_required') console.log(err.error);
   }
+
+  this.setState({checkingSession:false});
+
   }
 
   render() {
@@ -32,7 +46,7 @@ class App extends Component {
           <br/>
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
-          <SecuredRoute path="/create" component={CreateTodo} />
+          <SecuredRoute path="/create" component={CreateTodo} checkingSession={this.state.checkingSession} />
 
           <Route exact path='/callback' component={Callback}/>
         </div>
