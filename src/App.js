@@ -3,15 +3,21 @@ import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import auth0Client from './Auth';
 import NavBar from './navbar/NavBar';
 import SecuredRoute from './securedroute/SecuredRoute';
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import CreateTodo from "./components/create-todo.component";
 import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import Welcome from "./components/welcome";
-
 import Callback from './Callback';
+import amplitude from "amplitude-js";
+//import {
+//  AmplitudeProvider,
+//  Amplitude,
+//  LogOnMount
+//} from "@amplitude/react-amplitude";
+
+const AMPLITUDE_KEY = "2a0c877f114bcac05f8990957f9efcf3";
+
 
 class App extends Component {
 
@@ -41,6 +47,7 @@ class App extends Component {
 
   render() {
     return  (
+      amplitude.init(AMPLITUDE_KEY),
       <Router>
         <div className="container">
           <NavBar/>
