@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import auth0Client from '../Auth';
+import amplitude from "amplitude-js";
 
 export default class EditTodo extends Component {
 
@@ -81,6 +82,13 @@ export default class EditTodo extends Component {
     render() {
       if (!auth0Client.isAuthenticated()) return null;
         return (
+          amplitude.logEvent('Edit To Do Clicked',
+          {
+            'To Do Id': this.props.match.params.id,
+            'To Do Responsible':this.state.todo_responsible,
+            'To Do Priority':this.state.todo_priority,
+            'To Do Completed':this.state.todo_completed
+          }),
             <div>
                 <h3 align="center">Update Todo</h3>
                 <form onSubmit={this.onSubmit}>
