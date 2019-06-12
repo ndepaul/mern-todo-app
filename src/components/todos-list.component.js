@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import amplitude from "amplitude-js";
+
 
 const Todo = props => (
     <tr>
@@ -38,6 +40,7 @@ export default class TodosList extends Component {
 
     render() {
         return (
+          amplitude.logEvent('To Do List Viewed'),
             <div>
                 <h3>To Do List</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }} >
