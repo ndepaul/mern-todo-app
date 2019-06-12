@@ -87,7 +87,7 @@ export default class EditTodo extends Component {
             'Id': this.props.match.params.id,
             'Responsible':this.state.todo_responsible,
             'Priority':this.state.todo_priority,
-            'Is Completed':this.state.todo_completed
+            'Is completed':this.state.todo_completed
           }),
             <div>
                 <h3 align="center">Update Todo</h3>
