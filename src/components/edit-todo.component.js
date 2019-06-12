@@ -62,6 +62,13 @@ export default class EditTodo extends Component {
     }
 
     onSubmit(e) {
+      amplitude.logEvent('To Do Edited',
+      {
+        'Id': this.props.match.params.id,
+        'Responsible':this.state.todo_responsible,
+        'Priority':this.state.todo_priority,
+        'Is completed':this.state.todo_completed
+      })
         e.preventDefault();
         const obj = {
             todo_description: this.state.todo_description,
