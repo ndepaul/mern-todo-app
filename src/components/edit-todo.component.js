@@ -84,10 +84,10 @@ export default class EditTodo extends Component {
         return (
           amplitude.logEvent('Edit To Do Clicked',
           {
-            'To Do Id': this.props.match.params.id,
-            'To Do Responsible':this.state.todo_responsible,
-            'To Do Priority':this.state.todo_priority,
-            'To Do Completed':this.state.todo_completed
+            'Id': this.props.match.params.id,
+            'Responsible':this.state.todo_responsible,
+            'Priority':this.state.todo_priority,
+            'Is Completed':this.state.todo_completed
           }),
             <div>
                 <h3 align="center">Update Todo</h3>
