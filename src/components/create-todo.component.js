@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import auth0Client from '../Auth';
+import amplitude from "amplitude-js";
 
 export default class CreateTodo extends Component {
 
@@ -69,6 +70,7 @@ export default class CreateTodo extends Component {
 
   render() {
     return (
+          amplitude.logEvent('Create To Do Clicked'),
           <div style={{marginTop: 10}}>
               <h3>Create New To Do</h3>
               <form onSubmit={this.onSubmit}>
