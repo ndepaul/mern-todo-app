@@ -15,8 +15,8 @@ const Todo = props => (
     </tr>
 )
 
-export default class TodosList extends Component {
 
+export default class TodosList extends Component {
     constructor(props) {
         super(props);
         this.state = {todos: []};
@@ -30,17 +30,17 @@ export default class TodosList extends Component {
             .catch(function (error){
                 console.log(error);
             })
+            amplitude.logEvent('To Do List Viewed');
     }
 
     todoList() {
         return this.state.todos.map(function(currentTodo, i){
-            return <Todo todo={currentTodo} key={i} />;
+            return <Todo todo={currentTodo} key={i}/>;
         })
     }
 
     render() {
         return (
-          amplitude.logEvent('To Do List Viewed'),
             <div>
                 <h3>To Do List</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }} >

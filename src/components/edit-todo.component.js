@@ -31,6 +31,7 @@ export default class EditTodo extends Component {
                     todo_priority: response.data.todo_priority,
                     todo_completed: response.data.todo_completed
                 })
+                amplitude.logEvent('Edit To Do Clicked',{'Id': this.props.match.params.id, 'Responsible':this.state.todo_responsible,'Priority':this.state.todo_priority,'Is completed':this.state.todo_completed});
             })
             .catch(function (error) {
                 console.log(error);
@@ -62,13 +63,6 @@ export default class EditTodo extends Component {
     }
 
     onSubmit(e) {
-      amplitude.logEvent('To Do Edited',
-      {
-        'Id': this.props.match.params.id,
-        'Responsible':this.state.todo_responsible,
-        'Priority':this.state.todo_priority,
-        'Is completed':this.state.todo_completed
-      })
         e.preventDefault();
         const obj = {
             todo_description: this.state.todo_description,
@@ -83,19 +77,20 @@ export default class EditTodo extends Component {
         })
             .then(res => console.log(res.data));
 
+
+        amplitude.logEvent('To Do Edited',
+        {
+          'Id': this.props.match.params.id,
+          'Responsible':this.state.todo_responsible,
+          'Priority':this.state.todo_priority,
+          'Is completed':this.state.todo_completed
+        })
         this.props.history.push('/');
     }
 
     render() {
       if (!auth0Client.isAuthenticated()) return null;
         return (
-          amplitude.logEvent('Edit To Do Clicked',
-          {
-            'Id': this.props.match.params.id,
-            'Responsible':this.state.todo_responsible,
-            'Priority':this.state.todo_priority,
-            'Is completed':this.state.todo_completed
-          }),
             <div>
                 <h3 align="center">Update Todo</h3>
                 <form onSubmit={this.onSubmit}>
