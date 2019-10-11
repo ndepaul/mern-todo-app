@@ -47,7 +47,13 @@ class App extends Component {
 
   render() {
     return  (
-      amplitude.init(AMPLITUDE_KEY),
+      amplitude.init(AMPLITUDE_KEY, null, {
+        // optional configuration options
+        saveEvents: true,
+        includeUtm: true,
+        includeReferrer: true,
+        logLevel: 'INFO'
+      }),
       <Router>
         <div className="container">
           <NavBar/>
